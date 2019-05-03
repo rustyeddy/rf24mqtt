@@ -99,9 +99,7 @@ void process_incoming(char *payload, int size)
 
     // replace this with a call to the library !!!
     char command[254];
-    sprintf(command, "/usr/bin/mosquitto_pub -h 10.24.0.112 -t %s -m %s\n",
-	    chan, cpy);
-
+    sprintf(command, "/usr/bin/mosquitto_pub -h 10.24.0.112 -t sensors -m %s\n", cpy);
     system(command);
 
     if (size > 0) return;
@@ -115,5 +113,4 @@ void process_incoming(char *payload, int size)
 	printf("!! FAILED %d to publish string %s\n", rc, payload);
     }
 }
-
 
